@@ -50,7 +50,6 @@ if (class_exists('\MailQueue\MailQueue')) {
     $mail->setSubject($subject);
     $mail->setMessage($html);
     $queue->addMail($mail);
-    return true;
 }
 
 ```
