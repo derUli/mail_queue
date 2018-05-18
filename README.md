@@ -21,10 +21,10 @@ This isn't a regular E-Mail Mode you have to customize existing modules so they 
 1. Open the configuration file `CMSConfig.php` in a text editor and add this two variable definitions under the last line starting with "var", but before the last "}"
 
 ```php
-	// runs a cronjob every x seconds
-	var $mail_queue_interval = 5 * 60;
-	// maximum amount of mails sent during an execution of the cronjob 
-	var $mail_queue_limit = 5;
+// runs a cronjob every x seconds
+var $mail_queue_interval = 5 * 60;
+// maximum amount of mails sent during an execution of the cronjob 
+var $mail_queue_limit = 5;
 ```
 
 You may adjust the options as required.
@@ -36,23 +36,22 @@ You may adjust the options as required.
 ## Code Example
 
 ```php
-
-		$mail_to = "john@doe.de";
-		$subject = "My Subject";
-		$header = "From: max@muster.de\r\n";
-		$header .= "Content-type: text/html; charset=utf-8";
-		$html = "<h1>Hello World</h1>";
-		// Use mail_queue module for mail delivery if installed
-        if (class_exists('\MailQueue\MailQueue')) {
-            $queue = \MailQueue\MailQueue::getInstance();
-            $mail = new \MailQueue\Mail();
-            $mail->setRecipient($mail_to);
-            $mail->setHeaders($header);
-            $mail->setSubject($subject);
-            $mail->setMessage($html);
-            $queue->addMail($mail);
-            return true;
-        }
+$mail_to = "john@doe.de";
+$subject = "My Subject";
+$header = "From: max@muster.de\r\n";
+$header .= "Content-type: text/html; charset=utf-8";
+$html = "<h1>Hello World</h1>";
+// Use mail_queue module for mail delivery if installed
+if (class_exists('\MailQueue\MailQueue')) {
+    $queue = \MailQueue\MailQueue::getInstance();
+    $mail = new \MailQueue\Mail();
+    $mail->setRecipient($mail_to);
+    $mail->setHeaders($header);
+    $mail->setSubject($subject);
+    $mail->setMessage($html);
+    $queue->addMail($mail);
+    return true;
+}
 
 ```
 
