@@ -70,7 +70,7 @@ To run the unit test go to `ULICMS_ROOT` and run this command.
 
 Don't run the tests with a real mail server to avoid unnecessary spam.
 Use a fake mail server instead.
-I recommend [FakeSmtp](http://nilhcem.com/FakeSMTP/).
+I recommend [FakeSMTP](http://nilhcem.com/FakeSMTP/).
 
 
 ## Newsletter
