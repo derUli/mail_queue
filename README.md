@@ -73,7 +73,7 @@ I recommend [FakeSMTP](http://nilhcem.com/FakeSMTP/).
 
 ## Newsletter
 
-The newsletter module in version 0.1.1 or later uses the queue instead of instant mail delivery is this module is installed.
+The newsletter module in version 0.1.1 or later uses the queue instead of instant mail delivery if this module is installed.
 
 ## Upcoming Features
 
