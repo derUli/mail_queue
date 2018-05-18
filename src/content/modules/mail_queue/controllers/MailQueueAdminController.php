@@ -32,11 +32,11 @@ class MailQueueAdminController extends MainClass
         $error = false;
         if ($logger) {
             if (! $mail_queue_interval) {
-                $logger->error('mail_queue: $mail_queue_interval not set');
+                $logger->error('mail_queue: $mail_queue_interval is not set');
                 $error = true;
             }
             if (! $mail_queue_limit) {
-                $logger->error('mail_queue: $mail_queue_limit not set');
+                $logger->error('mail_queue: $mail_queue_limit is not set');
                 $error = true;
             }
             if ($error) {
