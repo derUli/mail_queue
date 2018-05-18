@@ -29,9 +29,9 @@ var $mail_queue_limit = 5;
 
 You may adjust the options as required.
 
-2. Install [mail_queue](https://extend.ulicms.de/better_cron.html) package if not installed yet.
+2. Install **[better_cron](https://extend.ulicms.de/better_cron.html)** package if not installed yet.
 
-3. Install `mail_queue`
+3. Install **mail_queue**
 
 ## Code Example
 
