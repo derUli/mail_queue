@@ -13,7 +13,7 @@ This isn't a regular E-Mail Mode you have to customize existing modules so they 
 
 ## Requirements
 
-* UliCMS 2018.3.1
+* UliCMS 2018.3
 * better_cron 1.0 or later
 
 ## Installation Howto
@@ -41,16 +41,15 @@ $subject = "My Subject";
 $header = "From: max@muster.de\r\n";
 $header .= "Content-type: text/html; charset=utf-8";
 $html = "<h1>Hello World</h1>";
-// Use mail_queue module for mail delivery if installed
-if (class_exists('\MailQueue\MailQueue')) {
-    $queue = \MailQueue\MailQueue::getInstance();
-    $mail = new \MailQueue\Mail();
-    $mail->setRecipient($mail_to);
-    $mail->setHeaders($header);
-    $mail->setSubject($subject);
-    $mail->setMessage($html);
-    $queue->addMail($mail);
-}
+
+$queue = \MailQueue\MailQueue::getInstance();
+$mail = new \MailQueue\Mail();
+$mail->setRecipient($mail_to);
+$mail->setHeaders($header);
+$mail->setSubject($subject);
+$mail->setMessage($html);
+$queue->addMail($mail);
+
 
 ```
 
