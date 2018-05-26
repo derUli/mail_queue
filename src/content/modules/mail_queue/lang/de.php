@@ -4,3 +4,4 @@ add_translation("recipient", "Empfänger");
 add_translation("headers", "Kopfzeilen");
 add_translation("message", "Nachricht");
 add_translation("created", "Erstellt");
+add_translation("subject", "Betreff");
