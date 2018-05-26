@@ -18,6 +18,7 @@ class MailQueueTest extends PHPUnit_Framework_TestCase {
 		}
 		$mails = $queue->getAllMails();
 		$this->assertEquals(100, count($mails));
+		$this->assertEquals(100, $queue->getMailCount());
 		
 		$mail3 = $mails[2];
 		$this->assertEquals("Subject 3", $mail3->getSubject()); 

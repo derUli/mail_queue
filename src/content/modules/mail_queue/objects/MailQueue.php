@@ -28,6 +28,13 @@ class MailQueue
         return $mails;
     }
 
+    public function getMailCount()
+    {
+        $query = Database::query("select count(id) as amount from `{prefix}mail_queue` order by id asc", true, true);
+        $fetched = Database::fetchObject($query);
+        return intval($fetched->amount);
+    }
+
     public function getNextMail()
     {
         $query = Database::query("select id from `{prefix}mail_queue` order by id asc limit 1", true);
