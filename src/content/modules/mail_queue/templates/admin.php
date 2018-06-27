@@ -7,6 +7,7 @@ $mails = $queue->getAllMails();
 <table class="tablesorter">
 	<thead>
 		<tr>
+		<td style="width:30px;"><input type="checkbox" class="select-all" data-target=".mail-ids"></td>
 			<th><?php translate("id");?></th>
 			<th><?php translate("recipient");?></th>
 			<th><?php translate("headers");?></th>
@@ -21,6 +22,7 @@ $mails = $queue->getAllMails();
 foreach ($mails as $mail) {
     ?>
 <tr>
+<td><input type="checkbox" name="ids[]" class="mail-ids" value="<?php esc($mail->getId());?>"></td>
 			<td><?php esc($mail->getId());?></td>
 			<td><?php esc($mail->getRecipient());?></td>
 			<td><?php echo nl2br(_esc($mail->getHeaders()));?></td>
@@ -28,8 +30,14 @@ foreach ($mails as $mail) {
 			<td><?php echo nl2br(_esc($mail->getMessage()));?></td>
 			<td><?php echo _esc(date('Y-m-d H:i:s', $mail->getCreated()));?></td>
 		</tr>
-    <?php
+ <?php
 }
 ?>
+<!-- <tr><td><input type="checkbox" name="ids[]" class="mail-ids" value="<?php echo uniqid();?>"></td></tr>
+<tr><td><input type="checkbox" name="ids[]" class="mail-ids" value="<?php echo uniqid();?>"></td></tr>
+<tr><td><input type="checkbox" name="ids[]" class="mail-ids" value="<?php echo uniqid();?>"></td></tr>
+<tr><td><input type="checkbox" name="ids[]" class="mail-ids" value="<?php echo uniqid();?>"></td></tr>
+<tr><td><input type="checkbox" name="ids[]" class="mail-ids" value="<?php echo uniqid();?>"></td></tr>
+-->
 </tbody>
 </table>
