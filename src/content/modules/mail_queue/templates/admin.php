@@ -4,7 +4,7 @@ $queue = MailQueue::getInstance();
 
 $mails = $queue->getAllMails();
 ?>
-<?php echo ModuleHelper::buildMethodCallForm("MailQueueAdminController.php", "doAction");?>
+<?php echo ModuleHelper::buildMethodCallForm("MailQueueAdminController", "doAction");?>
 <table class="tablesorter">
 	<thead>
 		<tr>
