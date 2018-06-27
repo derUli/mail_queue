@@ -41,13 +41,6 @@ foreach ($mails as $mail) {
 			<td><?php echo nl2br(_esc($mail->getMessage()));?></td>
 			<td><?php echo _esc(date('Y-m-d H:i:s', $mail->getCreated()));?></td>
 		</tr>
-
-<!-- <tr><td><input type="checkbox" name="ids[]" class="mail-ids" value="<?php echo uniqid();?>"></td></tr>
-<tr><td><input type="checkbox" name="ids[]" class="mail-ids" value="<?php echo uniqid();?>"></td></tr>
-<tr><td><input type="checkbox" name="ids[]" class="mail-ids" value="<?php echo uniqid();?>"></td></tr>
-<tr><td><input type="checkbox" name="ids[]" class="mail-ids" value="<?php echo uniqid();?>"></td></tr>
-<tr><td><input type="checkbox" name="ids[]" class="mail-ids" value="<?php echo uniqid();?>"></td></tr>
--->
 <?php } ?>
 </tbody>
 </table>
