@@ -3,7 +3,7 @@
 
 function usage()
 {
-    echo "mail_queue - Apply database migrations\n";
+    echo "mail_queue - Manage mail_queue\n";
     echo "UliCMS Version " . cms_version() . "\n";
     echo "Copyright (C) 2018 by Ulrich Schmidt";
     echo "\n\n";
@@ -65,7 +65,7 @@ switch ($action) {
                 echo $e->getMessage() . "\n";
             }
         }
-    break;
+        break;
     case "flush":
         $queue->flushMailQueue();
         break;
