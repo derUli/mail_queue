@@ -48,11 +48,12 @@ switch ($action) {
         if (count($argv) < 2) {
             usage();
         }
-        
-        $ids = explode(",", $argv[1]);
+        array_shift($argv);
+        $ids = $argv;
         $ids = array_map("trim", $ids);
         $ids = array_filter($ids, "strlen");
         $ids = array_map("intval", $ids);
+        
         if (count($ids) <= 0) {
             usage();
         }
