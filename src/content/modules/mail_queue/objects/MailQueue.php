@@ -45,7 +45,7 @@ class MailQueue
         }
         
         $result = Database::fetchObject($query);
-        $this->currentMailId = $result->id;
+        $this->currentMailId = intval($result->id);
         return new Mail($result->id);
     }
 
