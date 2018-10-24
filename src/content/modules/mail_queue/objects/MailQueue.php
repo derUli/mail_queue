@@ -8,6 +8,8 @@ class MailQueue
 
     private static $instance;
 
+    private $currentMailId = 0;
+
     public static function getInstance()
     {
         if (self::$instance == null) {
@@ -37,12 +39,13 @@ class MailQueue
 
     public function getNextMail()
     {
-        $query = Database::query("select id from `{prefix}mail_queue` order by id asc limit 1", true);
+        $query = Database::pQuery("select id from `{prefix}mail_queue` where id > ? order by id asc limit 1", array($this->currentMailId), true);
         if (Database::getNumRows($query) == 0) {
             return null;
         }
         
         $result = Database::fetchObject($query);
+        $this->currentMailId = $result->id;
         return new Mail($result->id);
     }
 
