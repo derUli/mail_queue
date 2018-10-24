@@ -75,7 +75,7 @@ class Mail extends \Model
     public function update()
     {
         if ($this->getID()) {
-            $sql = "update `{prefix}mail_queue` set recipient = ?, 
+            $sql = "update `{prefix}mail_queue` set recipient = ?,
                      headers = ?, subject = ?, message = ?, created = ?,
                      fails = ? where id = ?";
             $args = array(
@@ -83,7 +83,7 @@ class Mail extends \Model
                 $this->headers,
                 $this->subject,
                 $this->message,
-                $this->created,
+                date("Y-m-d H:i:s", $this->created),
                 $this->fails,
                 $this->getID()
             );
