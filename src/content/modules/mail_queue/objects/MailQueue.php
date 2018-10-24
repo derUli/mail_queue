@@ -52,6 +52,7 @@ class MailQueue
     public function flushMailQueue()
     {
         Database::truncateTable("mail_queue");
+        $this->currentMailId = 0;
     }
 
     public function addMail($mail)
