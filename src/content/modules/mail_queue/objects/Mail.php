@@ -75,7 +75,7 @@ class Mail extends \Model
     public function update()
     {
         if ($this->getID()) {
-            $sql = "update `{prefix}mail_queue` set recipient = ?,
+            $sql = "update `{prefix}mail_queue` set recipient = ?, 
                      headers = ?, subject = ?, message = ?, created = ?,
                      fails = ? where id = ?";
             $args = array(
