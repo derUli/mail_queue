@@ -76,6 +76,4 @@ The newsletter module in version 0.1.1 or later uses the queue instead of instan
 
 ## Upcoming Features
 
-* Delete mails in queue using the admin GUI
-
-* Command line interface tool to manage the queue
+* A maximum count of delivery attempts. If more than X tries fails the mail will get deleted from queue.
