@@ -31,6 +31,8 @@ class MailQueueTest extends PHPUnit_Framework_TestCase {
 			$this->assertTrue($nextMail->send());
 			$this->assertEquals($i - 1, count($queue->getAllMails()));
 		}	
+
+		$queue->flushMailQueue();
 	}
 	// TODO: Kommentar schreiben
 	public function testGetNextMail(){
@@ -43,7 +45,7 @@ class MailQueueTest extends PHPUnit_Framework_TestCase {
 			$mail->setMessage("Message $i");
 			$mail->setHeaders("From: foo@bar.de");
 			$queue->addMail($mail);
-			$mailsIds[] = $mail->getID();
+			$mailIds[] = $mail->getID();
 		}
 
 		$mail = $queue->getNextMail();
