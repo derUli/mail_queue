@@ -18,6 +18,8 @@ class Mail extends \Model
 
     private $created;
 
+    private $fails;
+
     public function loadByID($id)
     {
         $sql = "select * from `{prefix}mail_queue` where id = ?";
@@ -42,6 +44,7 @@ class Mail extends \Model
             $this->subject = $result->subject;
             $this->message = $result->message;
             $this->created = strtotime($result->created);
+            $this->fails = $result->fails;
         } else {
             $this->setID(null);
             $this->recipient = null;
@@ -49,6 +52,7 @@ class Mail extends \Model
             $this->subject = null;
             $this->message = null;
             $this->created = null;
+            $this->fails = 0;
         }
     }
 
@@ -72,14 +76,15 @@ class Mail extends \Model
     {
         if ($this->getID()) {
             $sql = "update `{prefix}mail_queue` set recipient = ?, 
-                     headers = ?, subject = ?, message = ?, created = ?
-                     where id = ?";
+                     headers = ?, subject = ?, message = ?, created = ?,
+                     fails = ? where id = ?";
             $args = array(
                 $this->recipient,
                 $this->headers,
                 $this->subject,
                 $this->message,
                 $this->created,
+                $this->fails,
                 $this->getID()
             );
             Database::pQuery($sql, $args, true);
@@ -102,6 +107,8 @@ class Mail extends \Model
             $this->delete();
             return true;
         }
+        $this->fails += 1;
+        $this->save();
         return false;
     }
 
@@ -128,6 +135,16 @@ class Mail extends \Model
     public function getCreated()
     {
         return $this->created;
+    }
+
+    public function getFails()
+    {
+        return $this->fails;
+    }
+
+    public function setFails($val)
+    {
+        $this->fails = intval($val);
     }
 
     public function setRecipient($val)

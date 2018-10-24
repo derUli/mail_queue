@@ -2,6 +2,7 @@
 namespace MailQueue;
 
 use Database;
+use CMSConfig;
 
 class MailQueue
 {
@@ -59,5 +60,17 @@ class MailQueue
     public function removeMail($mail)
     {
         $mail->delete();
+    }
+
+    // Delete all mails where max_tries is reached
+    public function cleanUp()
+    {
+        $cfg = new CMSConfig();
+        $mail_queue_max_tries = is_numeric($cfg->mail_queue_max_tries) ? intval($cfg->mail_queue_max_tries) : null;
+        if (! is_null($mail_queue_max_tries)) {
+            Database::pQuery("delete from {prefix}mail_queue where fails >= ?", array(
+                $mail_queue_max_tries
+            ), true);
+        }
     }
 }

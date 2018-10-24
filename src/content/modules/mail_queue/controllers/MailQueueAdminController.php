@@ -77,6 +77,8 @@ class MailQueueAdminController extends MainClass
                 }
                 $mail->send();
             }
+            // clean up bouncing mails
+            $queue->cleanUp();
         });
     }
 
