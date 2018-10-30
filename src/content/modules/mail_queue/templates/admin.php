@@ -12,7 +12,8 @@ $mails = $queue->getAllMails();
 		<tr>
 		
 <?php if($acl->hasPermission("mail_queue_manage")){?>
-<td style="width:30px;"><input type="checkbox" class="select-all" id="select-all-mails" data-target=".mail-ids"></td>
+<td style="width: 30px;"><input type="checkbox" class="select-all"
+				id="select-all-mails" data-target=".mail-ids"></td>
 <?php }?>
 			<th><?php translate("id");?></th>
 			<th><?php translate("recipient");?></th>
@@ -20,6 +21,7 @@ $mails = $queue->getAllMails();
 			<th><?php translate("subject");?></th>
 			<th><?php translate("message");?></th>
 			<th><?php translate("created");?></th>
+			<th><?php translate("failed_delivery_attempts");?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -29,17 +31,19 @@ foreach ($mails as $mail) {
 <tr>
 
 <?php if($acl->hasPermission("mail_queue_manage")){?>
-<td><input type="checkbox" name="ids[]" class="mail-ids checkbox" data-checkbox-group="mail"
-	value="<?php esc($mail->getId());?>" data-select-all-checkbox="#select-all-mails"></td> 
+<td><input type="checkbox" name="ids[]" class="mail-ids checkbox"
+				data-checkbox-group="mail" value="<?php esc($mail->getId());?>"
+				data-select-all-checkbox="#select-all-mails"></td> 
 	<?php
-}
-?>
+    }
+    ?>
 			<td><?php esc($mail->getId());?></td>
 			<td><?php esc($mail->getRecipient());?></td>
 			<td><?php echo nl2br(_esc($mail->getHeaders()));?></td>
 			<td><?php esc($mail->getSubject());?></td>
 			<td><?php echo nl2br(_esc($mail->getMessage()));?></td>
 			<td><?php echo _esc(date('Y-m-d H:i:s', $mail->getCreated()));?></td>
+			<td><?php esc($mail->getFails());?></td>
 		</tr>
 <?php } ?>
 </tbody>
