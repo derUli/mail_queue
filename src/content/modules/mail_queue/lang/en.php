@@ -6,3 +6,4 @@ add_translation("message", "Message");
 add_translation("created", "Created");
 add_translation("subject", "Subject");
 add_translation("do_action", "Do Action");
+add_translation("failed_delivery_attempts", "Failed Delivery Attempts");

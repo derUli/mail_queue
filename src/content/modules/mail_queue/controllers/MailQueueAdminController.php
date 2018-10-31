@@ -73,7 +73,7 @@ class MailQueueAdminController extends MainClass
             for ($i = 1; $i <= $mail_queue_limit; $i ++) {
                 $mail = $queue->getNextMail();
                 if (! $mail) {
-                    return;
+                    break;
                 }
                 $mail->send();
             }

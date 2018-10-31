@@ -34,6 +34,7 @@ switch ($action) {
         echo "Recipient\t";
         echo "Subject\t";
         echo "Date\t";
+        echo "Fails";
         echo "\n";
         echo "\n";
         foreach ($mails as $mail) {
@@ -41,6 +42,7 @@ switch ($action) {
             echo $mail->getRecipient() . "\t";
             echo $mail->getSubject() . "\t";
             echo \date('Y-m-d H:i:s', $mail->getCreated()) . "\t";
+            echo $mail->getFails();
             echo "\n";
         }
         break;
