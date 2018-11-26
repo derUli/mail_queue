@@ -20,6 +20,9 @@ class Mail extends \Model
 
     private $fails;
 
+    // TODO: Make a constant for default priority
+    private $priority = 128;
+
     public function loadByID($id)
     {
         $sql = "select * from `{prefix}mail_queue` where id = ?";
@@ -44,6 +47,7 @@ class Mail extends \Model
             $this->subject = $result->subject;
             $this->message = $result->message;
             $this->created = strtotime($result->created);
+            $this->priority = intval($this->priority);
             $this->fails = $result->fails;
         } else {
             $this->setID(null);
@@ -52,6 +56,7 @@ class Mail extends \Model
             $this->subject = null;
             $this->message = null;
             $this->created = null;
+            $this->priority = 128;
             $this->fails = 0;
         }
     }
@@ -60,13 +65,14 @@ class Mail extends \Model
     {
         $this->created = time();
         $sql = "insert into `{prefix}mail_queue` (recipient, headers, subject,
-                message, created) values (?, ?, ?, ?, from_unixtime(?))";
+                message, created, priority) values (?, ?, ?, ?, from_unixtime(?), ?)";
         $args = array(
             $this->recipient,
             $this->headers,
             $this->subject,
             $this->message,
-            $this->created
+            $this->created,
+            $this->priority
         );
         Database::pQuery($sql, $args, true);
         $this->setID(Database::getLastInsertID());
@@ -77,7 +83,7 @@ class Mail extends \Model
         if ($this->getID()) {
             $sql = "update `{prefix}mail_queue` set recipient = ?, 
                      headers = ?, subject = ?, message = ?, created = ?,
-                     fails = ? where id = ?";
+                     fails = ?, priority = ? where id = ?";
             $args = array(
                 $this->recipient,
                 $this->headers,
@@ -85,6 +91,7 @@ class Mail extends \Model
                 $this->message,
                 date("Y-m-d H:i:s", $this->created),
                 $this->fails,
+                $this->priority,
                 $this->getID()
             );
             Database::pQuery($sql, $args, true);
@@ -170,5 +177,14 @@ class Mail extends \Model
     public function setCreated($val)
     {
         $this->created = ! is_null($val) ? intval($val) : null;
+    }
+    public function getPriority(){
+        return $this->priority;
+    }
+    public function setPriority($val){
+        if(!is_numeric($val)){
+            throw new InvalidArgumentException();
+        }
+        $this->priority = intval($val);
     }
 }
