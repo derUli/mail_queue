@@ -40,7 +40,7 @@ class MailQueue
 
     public function getNextMail()
     {
-        $query = Database::pQuery("select id from `{prefix}mail_queue` where id > ? order by fails, id asc limit 1", array(
+        $query = Database::pQuery("select id from `{prefix}mail_queue` where id > ? order by priority desc, fails asc, id asc limit 1", array(
             $this->currentMailId
         ), true);
         if (Database::getNumRows($query) == 0) {
