@@ -66,10 +66,4 @@ class MailQueueTest extends \PHPUnit\Framework\TestCase
         
         $queue->flushMailQueue();
     }
-
-    // add a mail with unicode subject and message to the queue and read it.
-    // This is a test case for a bug fix which was implemented in mail_queue version 1.4.
-    public function testAddMailWithUnicode(){
-        throw new NotImplementedException();
-    }
 }
