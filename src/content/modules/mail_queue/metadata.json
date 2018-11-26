@@ -1,6 +1,6 @@
 {
 	"source": "extend",
-	"version": "1.4",
+	"version": "1.5",
 	"embed": false,
 	"custom_acl": [
 		"mail_queue_list",
@@ -14,8 +14,8 @@
 	"controllers": {
 		"MailQueueAdminController": "controllers/MailQueueAdminController.php"
 	},
-	"controller_function_permissions" : {
-	"MailQueueAdminController::doActionPost" : "mail_queue_manage"
+	"controller_function_permissions": {
+		"MailQueueAdminController::doActionPost": "mail_queue_manage"
 	},
 	"main_class": "MailQueueAdminController"
 }

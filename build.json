@@ -1,8 +1,13 @@
 {
-   "id" : "mail_queue",
-   "version" : "1.4",
-   "description" : "Mail Queue for UliCMS",
-   "categories" : ["email", "development"],
-   "compatible_from" : "2018.3.5",
-   "dependencies" : ["better_cron"]
+	"id": "mail_queue",
+	"version": "1.5",
+	"description": "Mail Queue for UliCMS",
+	"categories": [
+		"email",
+		"development"
+	],
+	"compatible_from": "2018.3.5",
+	"dependencies": [
+		"better_cron"
+	]
 }

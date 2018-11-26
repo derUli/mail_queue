@@ -66,4 +66,27 @@ class MailQueueTest extends \PHPUnit\Framework\TestCase
         
         $queue->flushMailQueue();
     }
+
+    // add a mail with unicode subject and message to the queue and read it.
+    // This is a test case for a bug fix which was implemented in mail_queue version 1.4.
+    public function testAddMailWithUnicode()
+    {
+        $queue = MailQueue\MailQueue::getInstance();
+        
+        $mail = new MailQueue\Mail();
+        $mail->setRecipient("hello@world.de");
+        $mail->setSubject("日本は美しい国です");
+        $mail->setMessage("私は日本に旅行したいです。");
+        $mail->setHeaders("From: foo@bar.de");
+        $queue->addMail($mail);
+        
+        $mail = $queue->getNextMail();
+        $this->assertEquals(1, $mail->getID());
+        $this->assertEquals("hello@world.de", $mail->getRecipient());
+        $this->assertEquals("日本は美しい国です", $mail->getSubject());
+        $this->assertEquals("私は日本に旅行したいです。", $mail->getMessage());
+        $this->assertEquals("From: foo@bar.de", $mail->getHeaders());
+        
+        $queue->flushMailQueue();
+    }
 }
