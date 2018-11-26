@@ -72,9 +72,4 @@ class MailQueueTest extends \PHPUnit\Framework\TestCase
     public function testAddMailWithUnicode(){
         throw new NotImplementedException();
     }
-
-    // Test if getNextMail() will account priority
-    public function testGetNextMailWithPriority(){
-        throw new NotImplementedException();
-    }
 }
