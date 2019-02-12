@@ -1,12 +1,12 @@
 {
 	"id": "mail_queue",
-	"version": "1.5",
+	"version": "1.6",
 	"description": "Mail Queue for UliCMS",
 	"categories": [
 		"email",
 		"development"
 	],
-	"compatible_from": "2018.3.5",
+	"compatible_from": "2019.1.3",
 	"dependencies": [
 		"better_cron"
 	]

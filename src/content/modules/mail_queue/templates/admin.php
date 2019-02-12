@@ -57,7 +57,7 @@ foreach ($mails as $mail) {
 		</select>
 	</div>
 	<div class="col-xs-4 text-right">
-		<button type="submit" class="btn btn-default"><?php translate("do_action");?></button>
+		<button type="submit" class="btn btn-default"><i class="fas fa-running"></i> <?php translate("do_action");?></button>
 	</div>
 </div>
 <?php } ?>
