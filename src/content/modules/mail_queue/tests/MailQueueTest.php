@@ -1,6 +1,4 @@
 <?php
-include_once "templating.php";
-
 class MailQueueTest extends \PHPUnit\Framework\TestCase
 {
 
