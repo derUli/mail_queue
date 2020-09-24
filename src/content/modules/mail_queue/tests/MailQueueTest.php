@@ -2,7 +2,7 @@
 class MailQueueTest extends \PHPUnit\Framework\TestCase
 {
 
-    public function setUp()
+    protected function setUp(): void
     {
         $queue = MailQueue\MailQueue::getInstance();
         $queue->flushMailQueue();
